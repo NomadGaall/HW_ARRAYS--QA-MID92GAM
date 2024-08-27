@@ -3,24 +3,24 @@ package ru.netology.stats;
 public class StatsService {
 
     // Метод для расчета среднего значения продаж
-    public long avgSales(int[] sales) {
+    public long avgSales(long[] sales) {
         long avg = sumAllSales(sales) / sales.length;
         return avg;
     }
 
     // Метод для расчета суммы всех продаж
-    public long sumAllSales(int[] sales) {
+    public long sumAllSales(long[] sales) {
         long sumSales = 0;
-        for (int s : sales) {
+        for (long s : sales) {
             sumSales += s;
         }
         return sumSales;
     }
 
     // Метод для нахождения месяца с минимальными продажами
-    public int minMonthSales(int[] sales) {
+    public int minMonthSales(long[] sales) {
         int minMonthSales = 0;
-        int minSales = sales[0];
+        long minSales = sales[0];
         for (int i = 1; i < sales.length; i++) {
             if (sales[i] < minSales) {
                 minSales = sales[i];
@@ -31,9 +31,9 @@ public class StatsService {
     }
 
     // Метод для нахождения месяца с максимальными продажами
-    public int maxMonthSales(int[] sales) {
-        int maxMonthSales = 0;
-        int maxSales = sales[0];
+    public long maxMonthSales(long[] sales) {
+        long maxMonthSales = 0;
+        long maxSales = sales[0];
         for (int i = 1; i < sales.length; i++) {
             if (sales[i] > maxSales) {
                 maxSales = sales[i];
@@ -44,10 +44,10 @@ public class StatsService {
     }
 
     // Метод для подсчета месяцев с продажами ниже среднего
-    public int countMonthWithSalesUnderAverage(int[] sales) {
+    public int countMonthWithSalesUnderAverage(long[] sales) {
         long average = avgSales(sales); // Рассчитываем среднее значение один раз
         int count = 0;
-        for (int sale : sales) {
+        for (long sale : sales) {
             if (sale < average) {
                 count++;
             }
@@ -56,10 +56,10 @@ public class StatsService {
     }
 
     // Метод для подсчета месяцев с продажами выше среднего
-    public int countMonthWithSalesUpperAverage(int[] sales) {
+    public int countMonthWithSalesUpperAverage(long[] sales) {
         long average = avgSales(sales); // Рассчитываем среднее значение один раз
         int count = 0;
-        for (int sale : sales) {
+        for (long sale : sales) {
             if (sale > average) {
                 count++;
             }
