@@ -38,9 +38,10 @@ public class StatsService {
     }
 
     public int countMonthWithSalesUnderAverage(int[] sales) {
+        int average = avgSales(sales); // Рассчитываем среднее значение один раз
         int count = 0;
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < avgSales(sales)) {
+            if (sales[i] < average) {
                 count++;
             }
         }
@@ -48,9 +49,10 @@ public class StatsService {
     }
 
     public int countMonthWithSalesUpperAverage(int[] sales) {
+        int average = avgSales(sales); // Рассчитываем среднее значение один раз
         int count = 0;
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > avgSales(sales)) {
+            if (sales[i] > average) {
                 count++;
             }
         }
