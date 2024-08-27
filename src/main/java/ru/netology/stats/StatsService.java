@@ -1,58 +1,66 @@
 package ru.netology.stats;
 
 public class StatsService {
-    public int avgSales(int[] sales) {
-        int avg = sumAllSales(sales) / sales.length;
+
+    // Метод для расчета среднего значения продаж
+    public long avgSales(int[] sales) {
+        long avg = sumAllSales(sales) / sales.length;
         return avg;
     }
 
-    public int sumAllSales(int[] sales) {
-        int sumSales = 0;
+    // Метод для расчета суммы всех продаж
+    public long sumAllSales(int[] sales) {
+        long sumSales = 0;
         for (int s : sales) {
             sumSales += s;
         }
         return sumSales;
     }
 
+    // Метод для нахождения месяца с минимальными продажами
     public int minMonthSales(int[] sales) {
-        // int minSales = sales[0];
         int minMonthSales = 0;
-        for (int i = 0; i < sales.length; i++) {
-            if (sales[i] <= sales[minMonthSales]) {
+        int minSales = sales[0];
+        for (int i = 1; i < sales.length; i++) {
+            if (sales[i] < minSales) {
+                minSales = sales[i];
                 minMonthSales = i;
             }
         }
-        return minMonthSales + 1;
+        return minMonthSales + 1; // Возвращаем номер месяца (1-12)
     }
 
+    // Метод для нахождения месяца с максимальными продажами
     public int maxMonthSales(int[] sales) {
-        int maxSales = sales[0];
         int maxMonthSales = 0;
-        for (int i = 0; i < sales.length; i++) {
-            if (sales[i] >= maxSales) {
+        int maxSales = sales[0];
+        for (int i = 1; i < sales.length; i++) {
+            if (sales[i] > maxSales) {
                 maxSales = sales[i];
-                maxMonthSales = i + 1;
+                maxMonthSales = i;
             }
         }
-        return maxMonthSales;
+        return maxMonthSales + 1; // Возвращаем номер месяца (1-12)
     }
 
+    // Метод для подсчета месяцев с продажами ниже среднего
     public int countMonthWithSalesUnderAverage(int[] sales) {
-        int average = avgSales(sales); // Рассчитываем среднее значение один раз
+        long average = avgSales(sales); // Рассчитываем среднее значение один раз
         int count = 0;
-        for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < average) {
+        for (int sale : sales) {
+            if (sale < average) {
                 count++;
             }
         }
         return count;
     }
 
+    // Метод для подсчета месяцев с продажами выше среднего
     public int countMonthWithSalesUpperAverage(int[] sales) {
-        int average = avgSales(sales); // Рассчитываем среднее значение один раз
+        long average = avgSales(sales); // Рассчитываем среднее значение один раз
         int count = 0;
-        for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > average) {
+        for (int sale : sales) {
+            if (sale > average) {
                 count++;
             }
         }
